@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Займи малыша</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: #fff7ed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 24px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .emoji { font-size: 56px; margin-bottom: 16px; }
+        h1 { font-size: 22px; font-weight: 700; color: #1c1c1e; margin-bottom: 8px; }
+        p { font-size: 15px; color: #6b7280; line-height: 1.5; margin-bottom: 24px; }
+        .btn {
+            display: block;
+            background: linear-gradient(to right, #fb923c, #f59e0b);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 16px;
+            text-decoration: none;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.35);
+        }
+        .hint {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+        #fallback { display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji">🧸</div>
+        <h1>Займи малыша</h1>
+        <p>Игры для детей из подручных вещей — за 5 секунд, без экранов</p>
+
+        <div id="auto">
+            <p style="color:#f97316; font-weight:600;">Открываем Telegram...</p>
+        </div>
+
+        <div id="fallback">
+            <a class="btn" href="tg://resolve?domain=zaymi_malisha_bot&start=1">
+                Открыть в Telegram
+            </a>
+            <p class="hint">
+                Если кнопка не работает — скопируй ссылку и открой в браузере:<br>
+                <strong>t.me/zaymi_malisha_bot</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Пробуем открыть через tg:// — работает даже из TikTok
+        window.location.href = 'tg://resolve?domain=zaymi_malisha_bot&start=1';
+
+        // Если через 1.5 сек не открылось — показываем кнопку вручную
+        setTimeout(function() {
+            document.getElementById('auto').style.display = 'none';
+            document.getElementById('fallback').style.display = 'block';
+        }, 1500);
+    </script>
+</body>
+</html>
